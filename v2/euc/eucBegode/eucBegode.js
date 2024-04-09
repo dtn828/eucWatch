@@ -345,12 +345,17 @@ euc.conn=function(mac){
 					euc.proxy.buffer.shift();
 					if (euc.proxy.buffer[0]) return c.writeValue(euc.proxy.buffer[0])
 				}).catch(euc.off);
-			}else if (euc.state=="OFF"||n=="end") {
+			} else if (euc.state=="OFF"||n=="end") {
 				euc.temp.exit(c);
 			} else if (n==="start") {
 				if (euc.is.run) c.startNotifications();
 				else euc.temp.init(c);
 				setTimeout(()=>{euc.state="READY";},500);
+			} else if (n==="hornOn") {
+				if (euc.dash.opt.lght.HL===1) {euc.dash.opt.lght.HL=0;} else {euc.dash.opt.lght.HL=1;}
+				c.writeValue(euc.cmd((euc.dash.opt.lght.HL)?"lightsOn":"lightsOff")).then(function() {
+					return c.writeValue(euc.cmd("beep"));
+				}).catch(euc.off);
 			}else{
 				let cob=euc.cmd(n,v);
 				if (!cob[0]) return;
