@@ -71,7 +71,7 @@ euc.temp.faultAlarms =function(code) {
 		case 4: return 'over voltage';
 		case 5: return 'high temperature';
 		case 6: return 'hall sensor error';
-		case 7: return 'transport mode';
+		//case 7: return 'transport mode';
 	}
 };
 euc.temp.hapt=function(){
