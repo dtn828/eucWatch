@@ -260,7 +260,7 @@ euc.temp.init=function(c) {
 	c.writeValue(euc.cmd(euc.dash.auto.onC.HL?hlc[euc.dash.auto.onC.HL]:"none")).then(function() {
 		return c.writeValue(euc.cmd(euc.dash.auto.onC.beep?"beep":"none"));
 	}).then(function() {
-		return euc.wri(euc.dash.auto.onC.led?("ledMode",euc.dash.auto.onC.led-1):"none");
+		return c.writeValue(euc.dash.auto.onC.led?euc.cmd("ledMode", euc.dash.auto.onC.led-1):"none");
 	}).then(function() {
 		if (!euc.dash.info.get.modl){
 			console.log("model not found,fetch");
@@ -281,13 +281,13 @@ euc.temp.exit=function(c) {
 		c.writeValue(euc.cmd(hld[euc.dash.auto.onD.HL])).then(function() {
 			return c.writeValue(euc.cmd(euc.dash.auto.onD.beep?"beep":"none"));
 		}).then(function() {
-			return euc.wri(euc.dash.auto.onD.led?("ledMode",euc.dash.auto.onD.led-1):"none");
+			return c.writeValue(euc.dash.auto.onD.led?euc.cmd("ledMode", euc.dash.auto.onD.led-1):"none");
 		}).then(function() {
 			euc.is.run=0;
 			return c.stopNotifications();
 		}).then(function() {
 			euc.gatt.disconnect();
-		}).catch(euc.off);
+		});
 	}else {
 		if (euc.tout.busy) {clearTimeout(euc.tout.busy);euc.tout.busy=0;}
 		euc.state="OFF";
