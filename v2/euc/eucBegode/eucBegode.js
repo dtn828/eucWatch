@@ -71,8 +71,8 @@ euc.temp.faultAlarms = function (code) {
 		case 4: return 'over voltage';
 		case 5: return 'high temperature';
 		case 6: return 'hall sensor error';
-		case 7: return ''; //'transport mode', also sent every time "beep" command is used, disabled
-		default: return 'alarm code ' + code;
+		case 7: return ''; //sent every time "beep" command is used
+		default: return 'ERR ' + code;
 	}
 };
 euc.temp.hapt = function () {
@@ -361,10 +361,10 @@ euc.conn = function (mac) {
 					euc.dash.opt.lght.HL = (euc.dash.opt.lght.HL) ? 0 : 1;
 					c.writeValue(euc.cmd((euc.dash.opt.lght.HL) ? "lightsOn" : "lightsOff")).then(function () { return c.writeValue(euc.cmd("beep")); }).catch(euc.off);
 				} else if (n === "strobetgl") {
-					c.writeValue(euc.cmd("lightsStrobe")).then(function () { return c.writeValue(euc.cmd("beep")); }).catch(euc.off);
+					c.writeValue(euc.cmd("lightsStrobe"));
 				} else if (n === "ledtgl") {
 					euc.dash.opt.lght.led = (euc.dash.opt.lght.led===4)?6:4;
-					c.writeValue(euc.cmd("ledMode",euc.dash.opt.lght.led)).then(function () { return c.writeValue(euc.cmd("beep")); }).catch(euc.off);
+					c.writeValue(euc.cmd("ledMode",euc.dash.opt.lght.led));
 				} else {
 					let cob = euc.cmd(n, v);
 					if (!cob[0]) return;
