@@ -361,9 +361,6 @@ euc.conn = function (mac) {
 					c.writeValue(euc.cmd((euc.dash.opt.lght.HL) ? "lightsOn" : "lightsOff")).then(function () { return c.writeValue(euc.cmd("beep")); }).catch(euc.off);
 				} else if (n === "strobetgl") {
 					c.writeValue(euc.cmd("lightsStrobe"));
-				} else if (n === "ledtgl") {
-					euc.dash.opt.lght.led = (euc.dash.opt.lght.led===4)?6:4;
-					c.writeValue(euc.cmd("ledMode",euc.dash.opt.lght.led));
 				} else {
 					let cob = euc.cmd(n, v);
 					if (!cob[0]) return;
