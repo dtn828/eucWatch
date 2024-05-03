@@ -30,6 +30,7 @@ function btn1(s) {
 	
 	if (this.press) {
 		this.presscount ++;
+		this.presscount ++;
 		if (this.tclick) { clearTimeout(this.tclick); this.tclick = 0; }
 		this.tclick = setTimeout(() => {
 			this.tclick = 0;
@@ -42,6 +43,8 @@ function btn1(s) {
 					euc.wri(this.press || !euc.is.horn ? "hornOn" : "hornOff");
 				}
 				if (ew.def.acc) return;
+			// Toggle EUC connection	
+			} else if (this.presscount === 1 && this.press && global.euc) {
 			// Toggle EUC connection	
 			} else if (this.presscount === 1 && this.press && global.euc) {
 				euc.tgl();
