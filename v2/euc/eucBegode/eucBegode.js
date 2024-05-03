@@ -71,7 +71,8 @@ euc.temp.faultAlarms = function (code) {
 		case 4: return 'over voltage';
 		case 5: return 'high temperature';
 		case 6: return 'hall sensor error';
-		//case 7: return 'transport mode';
+		case 7: return ''; //sent every time "beep" command is used
+		default: return 'ERR ' + code;
 	}
 };
 euc.temp.hapt = function () {
@@ -237,7 +238,7 @@ euc.temp.pck4 = function (data) {
 				faultAlarmLine += euc.temp.faultAlarms(bit) + ', ';
 		}
 		faultAlarmLine = faultAlarmLine.slice(0, -2);
-		euc.dash.alrt.warn.txt = faultAlarmLine;
+		if (faultAlarmLine) euc.dash.alrt.warn.txt = faultAlarmLine;
 		//updatePwmAlarmSpeed
 		if (euc.dash.alrt.warn.code & 0x1) {
 			euc.dash.alrt.pwr = 1;
