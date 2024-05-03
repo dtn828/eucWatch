@@ -25,15 +25,15 @@ function btn1(s) {
 	//"ram";
 	if (s.state == this.press) return;
 	this.press = s.state;
-	//if (this.t1) { clearTimeout(this.t1); this.t1 = 0; }
 	
 	if (face.offid) { clearTimeout(face.offid); face.offid = 0; }
 	
 	if (this.press) {
-		this.presscount += 1;
+		this.presscount ++;
 		if (this.tclick) { clearTimeout(this.tclick); this.tclick = 0; }
 		this.tclick = setTimeout(() => {
 			this.tclick = 0;
+			// Horn
 			if (this.presscount === 1 && global.euc && euc.state == "READY" && 2 <= euc.dash.live.spd && euc.dash.opt.horn.en) {
 				if (!euc.is.horn && !this.press) {
 					euc.wri("hornOn");
@@ -42,8 +42,10 @@ function btn1(s) {
 					euc.wri(this.press || !euc.is.horn ? "hornOn" : "hornOff");
 				}
 				if (ew.def.acc) return;
-			} else if (global.euc && this.press) {
+			// Toggle EUC connection	
+			} else if (this.presscount === 1 && this.press && global.euc) {
 				euc.tgl();
+			// Single button press default handling
 			} else if (!this.press && this.presscount === 1) {
 				if (face.pageCurr == -1) {
 					buzzer.nav(buzzer.buzz.on);
@@ -59,13 +61,17 @@ function btn1(s) {
 					if (face.appCurr == "clock") { face.go("clock", -1); buzzer.nav(buzzer.buzz.off); }
 					else face.go("clock", 0);
 				}
-			} else if (this.presscount === 2) {
-				if (global.euc && euc.state == "READY") euc.wri("HLtgl");
-			} else if (this.presscount === 3) {
-				if (ew.def.hid == 1 && ew.is.hidM != "undefined") ew.is.hidM.playpause();
-			} else if (this.presscount === 4) {
-				if (global.euc && euc.state == "READY") euc.wri("strobetgl");
-			}
+			// Custom button commands
+			} else {
+				action = this.presscount + this.press?100:0;
+				switch(action){
+					case 2: if (global.euc && euc.state == "READY") euc.wri("HLtgl");
+					case 102: if (global.euc && euc.state == "READY") euc.wri("strobetgl");
+					case 3: if (ew.def.hid == 1 && ew.is.hidM != "undefined") ew.is.hidM.playpause();
+					case 103: if (ew.def.hid == 1 && ew.is.hidM != "undefined") ew.is.hidM.next();
+					case 4: if (global.euc && euc.state == "READY") euc.wri("ledtgl");
+				}
+			} 
 			this.press = false;
 			this.presscount = 0;
 			//if (ew.def.acc) return;
