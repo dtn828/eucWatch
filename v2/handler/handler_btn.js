@@ -67,8 +67,8 @@ function btn1(s) {
 				switch(action){
 					case 2: if (global.euc && euc.state == "READY") euc.wri("HLtgl");break;
 					case 102: if (global.euc && euc.state == "READY") euc.wri("strobetgl");break;
-					case 3: if (ew.def.hid == 1 && ew.is.hidM != "undefined") ew.is.hidM.playpause();break;
-					case 103: if (ew.def.hid == 1 && ew.is.hidM != "undefined") ew.is.hidM.next();break;
+					case 3: if (ew.def.hid == 1 && ew.is.hidM) ew.is.hidM.playpause();break;
+					case 103: if (ew.def.hid == 1 && ew.is.hidM) ew.is.hidM.next();break;
 					case 4: if (global.euc && euc.state == "READY") euc.wri("ledtgl");break;
 				}
 			} 
