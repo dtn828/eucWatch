@@ -72,10 +72,10 @@ function btn1(s) {
 					case 4: if (global.euc && euc.state == "READY") euc.wri("ledtgl");break;
 				}
 			} 
-			this.press = false;
+			//this.press = false;
 			this.presscount = 0;
 			//if (ew.def.acc) return;
-		}, process.env.BOARD == "BANGLEJS2" ? 300 : 500);
+		}, process.env.BOARD == "BANGLEJS2" ? 300 : 800);
 	} else {
 		if (global.euc && euc.state == "READY" && euc.is.horn && euc.dash.opt.horn.en) { euc.wri("hornOff"); if (ew.def.acc) return; }
 	}
