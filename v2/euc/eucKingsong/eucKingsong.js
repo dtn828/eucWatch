@@ -534,6 +534,9 @@ euc.conn = function(mac) {
 						if (!euc.dash.info.get.serl) return c.writeValue(euc.cmd("getSerial"));
 					}).catch(euc.off);
 				}
+				else if (n === "HLtgl") {
+					
+				}
 				else if (euc.state == "OFF" || n == "end") {
 					if (euc.gatt && euc.gatt.connected) {
 						c.writeValue(euc.cmd((euc.dash.auto.onD.lock) ? "doLock" : "na")).then(function() {
