@@ -82,7 +82,7 @@ face[0].d2=function(){
 	UI.btn.c2l("main","_2x3",3,"AMP",euc.dash.opt.unit.ampR?"R":"N",15,5); //3
 	UI.btn.c2l("main","_2x3",4,"EMPTY",euc.dash.opt.bat.low/100,15,6); //4
 	UI.btn.c2l("main","_2x3",5,"DIST X",euc.dash.opt.unit.fact.dist,15,6); //5
-	UI.btn.c2l("main","_2x3",6,"PACK",euc.dash.opt.bat.pack*67.2|0,15,5); //6
+	UI.btn.c2l("main","_2x3",6,"PACK","S" + euc.dash.opt.bat.pack.toString(10),15,5); //6
 	UIc.end();
 	//
 	UIc.main._2x3=(i)=>{
@@ -133,12 +133,14 @@ face[0].d2=function(){
 			};	
 		}else if (i==6){
 			buzzer.nav(buzzer.buzz.ok); 
-			if (1.5<=euc.dash.opt.bat.pack&& euc.dash.opt.bat.pack<=1.8) euc.dash.opt.bat.pack=1.875;
-			else if (euc.dash.opt.bat.pack==1.875) euc.dash.opt.bat.pack=2;
-			else if (euc.dash.opt.bat.pack==2) euc.dash.opt.bat.pack=1;
-			else euc.dash.opt.bat.pack=euc.dash.opt.bat.pack+0.25;
-			if (ew.def.info) UI.btn.ntfy(1,1.5,0,"_bar",6,"WHEEL","VOLTAGE",0,15);
-			UI.btn.c2l("main","_2x3",6,"PACK",euc.dash.opt.bat.pack*67.2|0,15,5); //6
+			UI.btn.ntfy(1,3,0,"_bar",6,"BATTERY","VOLTAGE",15,1,1);
+			ew.temp.bar=1;
+			TC.val={cur:euc.dash.opt.bat.pack,dn:1,up:50,tmp:0};
+			UIc.tcBar=(a,b)=>{ 
+				UI.btn.ntfy(0,2,1);
+				UI.btn.c2l("main","_2x3",6,b*4.2,b,15,6); //1
+				euc.dash.opt.bat.pack=b;
+			};	
 		}
 	};
 };

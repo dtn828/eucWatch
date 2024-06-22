@@ -16,36 +16,35 @@ face[0] = {
 		UI.ele.title(this.page.toUpperCase(),3,0);
 		UIc.start(1,1);
 		this.run=1;
-		UI.btn.c2l("main","_2x2",1,"RIDE",(euc.dash.opt.ride.mode==0)?"SOFT":(euc.dash.opt.ride.mode==1)?"MED":"HARD",15,4);
-		UI.btn.c2l("main","_2x2",2,"On Connect","",15,(euc.dash.alrt.spd.hapt.en||euc.dash.alrt.amp.hapt.en||euc.dash.alrt.tmp.hapt.en||euc.dash.alrt.bat.hapt.en)?4:1);
-		UI.btn.c2l("main","_2x2",3,euc.dash.opt.tpms?euc.dash.opt.tpms:"TPMS",(euc.dash.opt.tpms)?(tpms.euc[euc.dash.opt.tpms]&&tpms.euc[euc.dash.opt.tpms].psi)?Math.round(tpms.euc[euc.dash.opt.tpms].psi*metric[tpms.def.metric]).toString(1):"WAIT":"OFF",15,(euc.dash.opt.tpms&&tpms.euc[euc.dash.opt.tpms]&&tpms.euc[euc.dash.opt.tpms].time&&(getTime()|0)-tpms.euc[euc.dash.opt.tpms].time<1800)?(tpms.euc[euc.dash.opt.tpms].alrm)?7:4:1);
-		UI.btn.c2l("main","_2x2",4,"On Disconnect","",15,euc.dash.opt.horn.en?4:0);	
+        let val=["NA","ON","OFF","STOBE"];
+		UI.btn.c2l("main","_2x2",1,"HL",val[euc.dash.auto.onC.HL],15,4);
+		UI.btn.c2l("main","_2x2",2,"LED",euc.dash.auto.onC.led?euc.dash.auto.onC.led-1+"":"NA",15,4);
+		UI.btn.c2l("main","_2x2",3,"BEEP",euc.dash.auto.onC.beep?"ON":"NA",15,4);
+		UI.btn.c2l("main","_2x2",4,"","",15,4);	
 		UIc.end();
 		this.run=1;
 		//
 		UIc.main._2x2=(i)=>{
 			if (i==1){
 				buzzer.nav(buzzer.buzz.ok);
-				tmp=euc.dash.opt.ride.mode+1;
-				if(tmp>2) tmp=0;
-				euc.dash.opt.ride.mode=tmp;
-				euc.wri("RideMode", tmp);
-				euc.dash.opt.ride.mode=tmp;
-				UI.btn.c2l("main","_2x2",1,"RIDE",(euc.dash.opt.ride.mode==0)?"SOFT":(euc.dash.opt.ride.mode==1)?"MED":"HARD",15,4);
-				//if (ew.def.info) UI.btn.ntfy(1,2,0,"_bar",6,euc.dash.opt.lght.HL?"ON":"OFF","",15,0);w.gfx.flip();
+                euc.dash.auto.onC.HL++;  if (3<euc.dash.auto.onC.HL) euc.dash.auto.onC.HL=0;
+                let val=["NA","ON","OFF","STOBE"];
+                UI.btn.c2l("main","_2x2",1,"HL",val[euc.dash.auto.onC.HL],15,4);
+
 			}else if (i==2){
 				buzzer.nav(buzzer.buzz.ok);
-				face.go("dashBegodeOnC",0);
+                euc.dash.auto.onC.led++; if (10<euc.dash.auto.onC.led) euc.dash.auto.onC.led=0;
+				UI.btn.c2l("main","_2x2",2,"LED",euc.dash.auto.onC.led?euc.dash.auto.onC.led-1+"":"NA",15,4);
 				return;
 		  }
 		  else if (i==3){
-				buzzer.nav(buzzer.buzz.ok);		
-				//UI.btn.c2l("main","_2x2",3,euc.dash.opt.tpms?euc.dash.opt.tpms:"TPMS",(euc.dash.opt.tpms)?(tpms.euc[euc.dash.opt.tpms]&&tpms.euc[euc.dash.opt.tpms].psi)?Math.round(tpms.euc[euc.dash.opt.tpms].psi*metric[tpms.def.metric]).toString(1):"WAIT":"OFF",15,(euc.dash.opt.tpms&&tpms.euc[euc.dash.opt.tpms]&&tpms.euc[euc.dash.opt.tpms].time&&(getTime()|0)-tpms.euc[euc.dash.opt.tpms].time<1800)?(tpms.euc[euc.dash.opt.tpms].alrm)?7:4:1);
-				//if (ew.def.info) UI.btn.ntfy(1,2,0,"_bar",6,euc.dash.auto.onC.lift?euc.dash.auto.onC.lift==1?"ENABLE":"DISABLE":"NO ACTION","",15,0);w.gfx.flip();
+				buzzer.nav(buzzer.buzz.ok);	
+                euc.dash.auto.onC.beep=1-euc.dash.auto.onC.beep;
+                UI.btn.c2l("main","_2x2",3,"BEEP",euc.dash.auto.onC.beep?"ON":"NA",15,4);
+                return;
 			}else if (i==4){
 				buzzer.nav(buzzer.buzz.ok);	
-				face.go("dashBegodeOnC",0);
-				return;		  }
+		  }
 		};
 		UIc.bar._2x2=(i)=>{
 			if (i==3){

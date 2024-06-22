@@ -35,17 +35,17 @@ face[0] = {
 		this.trpF=euc.dash.opt.unit.fact.dist*((ew.def.dash.mph)?0.625:1);
 		this.run=true;
 		this.pos={};
-		this.pos.topl=[0,20,119,70];
-		this.pos.topr=[122,20,239,70];
+		this.pos.topl=[0,20,119,71];
+		this.pos.topr=[120,20,239,71];
 		this.pos.pwm=[0,196,239,217];
-		this.pos.spd=[43,72,197,190];
+		this.pos.spd=[41,72,199,192];
 		this.pos.alrm=[0,196,239,217];
 		this.pos.btn1=[0,72,40,132];
 		this.pos.btn2=[0,135,40,193];
 		this.pos.btn3=[200,72,239,132];
 		this.pos.btn4=[200,135,239,193];
 		this.pos.btm=[0,196,239,217];
-		this.pos.bar=[0,240,239,280];
+		this.pos.bar=[0,218,239,280];
 		this.indP=1;
 		this.indD=1;
 
@@ -239,7 +239,7 @@ face[0] = {
 		this.g.drawString(temp, 0,this.pos.topl[1]+3); 
 
 		this.g.setFontVector(16);
-		this.g.drawString((ew.def.dash.farn)?"°F":"°C",size-1,this.pos.topl[1]+5); 
+		this.g.drawString((ew.def.dash.farn)?"F":"C",size-1,this.pos.topl[1]+5); 
 		if (this.old)this.g.flip();
 	},	
 	amLF: function(){
@@ -268,7 +268,7 @@ face[0] = {
 	},
 	vltF: function(){
 		//"ram";
-		face[0].buff.volt=euc.dash.live.volt.toFixed(2);
+		face[0].buff.volt=(euc.dash.live.volt).toFixed(2);
 		this.g.setColor(0,this.batC[euc.dash.alrt.bat.cc]);
 		this.g.fillRect(this.pos.topr[0],this.pos.topr[1],this.pos.topr[2],this.pos.topr[3]);       
 		this.g.setColor(1,15);
