@@ -357,6 +357,12 @@ euc.conn = function (mac) {
 					c.writeValue(euc.cmd((euc.dash.opt.lght.HL) ? "lightsOn" : "lightsOff")).then(function () {
 						return c.writeValue(euc.cmd("beep"));
 					}).catch(euc.off);
+				} else if (n === "lightsOn") {
+					euc.dash.opt.lght.HL = 1;
+					c.writeValue(euc.cmd( "lightsOn")).then(function () { return c.writeValue(euc.cmd("beep")); }).catch(euc.off);
+				} else if (n === "lightsOff") {
+					euc.dash.opt.lght.HL = 1;
+					c.writeValue(euc.cmd( "lightsOn")).then(function () { return c.writeValue(euc.cmd("beep")); }).catch(euc.off);
 				} else if (n === "HLtgl") {
 					euc.dash.opt.lght.HL = (euc.dash.opt.lght.HL) ? 0 : 1;
 					c.writeValue(euc.cmd((euc.dash.opt.lght.HL) ? "lightsOn" : "lightsOff")).then(function () { return c.writeValue(euc.cmd("beep")); }).catch(euc.off);
