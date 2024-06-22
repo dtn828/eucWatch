@@ -44,18 +44,8 @@ face[0] = {
 				//if (ew.def.info) UI.btn.ntfy(1,2,0,"_bar",6,euc.dash.auto.onC.lift?euc.dash.auto.onC.lift==1?"ENABLE":"DISABLE":"NO ACTION","",15,0);w.gfx.flip();
 			}else if (i==4){
 				buzzer.nav(buzzer.buzz.ok);	
-				face.go("dashBegodeOnC",0);
+				face.go("dashBegodeOnD",0);
 				return;		  }
-		};
-		UIc.bar._2x2=(i)=>{
-			if (i==3){
-				buzzer.nav(buzzer.buzz.ok);		
-				UI.btn.ntfy(1,2,0,"_bar",6,euc.dash.auto.onC.lift?euc.dash.auto.onC.lift==1?"ENABLE":"DISABLE":"NO ACTION","",15,0);w.gfx.flip();
-			}else if (i==4){
-				buzzer.nav(buzzer.buzz.ok);	
-				euc.dash.opt.horn.en=1-euc.dash.opt.horn.en;
-				UI.btn.ntfy(1,2,0,"_bar",6,euc.dash.opt.horn.en?"ENABLED":"DISABLED","",15,euc.dash.opt.horn.en?4:0);w.gfx.flip();
-		  }
 		};
 	},
 	show : function(){
