@@ -13,7 +13,7 @@ acc={
 	,
 	chk2:process.env.BOARD=="P8"||process.env.BOARD=="P22"?
 		()=>{ let cor=acc.read(); if (-1200<=cor.ax && cor.ax<=-200 && -700<=cor.ay && cor.ay<=1000 && cor.az<=-100 )  return true;}:
-		()=>{ let cor=acc.read(); if (-200<=cor.ax && cor.ay<=500  && 500<cor.az)return true;}
+		()=>{ let cor=acc.read(); if (-200<=cor.ax && cor.ay>=-500 && cor.ay<500 && cor.az>0)return true;}
 	,
 	on:function(v){
 		i2c.writeTo(0x18,0x20,0x4f); //CTRL_REG1 20h ODR3 ODR2 ODR1 ODR0 LPen Zen Yen Xen , 50hz, lpen1. zyx
@@ -96,7 +96,7 @@ acc={
 						//if (face[0].clear) face.go(face.appCurr,-1); else face.off(500);
 					}
 				}
-			},ew.pin.acc.INT,{repeat:true,edge:"rising",debounce:50});
+			},ew.pin.acc.INT,{repeat:true,edge:"both",debounce:50});
 			return true;
 		} 
 	},

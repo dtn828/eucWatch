@@ -617,7 +617,7 @@ if (ew.def.acctype==="BMA421"){
 		euc:function(){
 			"ram";
 			let data=i2c.readFrom(0x18,6);
-			//print(data);
+			print(data);
 			if (220<data[3]&&data[3]<255) {
 				if (data[1]<this.xedge||data[1]>=240) {
 					if (!this.up&&!w.gfx.isOn){  
@@ -641,7 +641,7 @@ if (ew.def.acctype==="BMA421"){
 		init:function(){
 			if(!this.run) return;
 			let data=i2c.readFrom(0x18,6);
-			//print("acc :",data);
+			print("acc :",data);
 			//if (!this.up && 230<data[3]&&data[3]<this.yedge) {
 			if (230<data[3]&&data[3]<this.yedge) {
 				if (data[1]<this.xedge||data[1]>=220) {
