@@ -11,9 +11,9 @@ face[0] = {
 		UIc.start(1,1);
 		this.run=1;
         let val=["NA","ON","OFF","STOBE"];
-		UI.btn.c2l("main","_2x2",1,"HL",val[euc.dash.auto.onC.HL],15,euc.dash.auto.onC.HL?4:1);
-		UI.btn.c2l("main","_2x2",2,"LED",euc.dash.auto.onC.led?euc.dash.auto.onC.led-1+"":"NA",15,euc.dash.auto.onC.led?4:1);
-		UI.btn.c2l("main","_2x2",3,"BEEP",euc.dash.auto.onC.beep?"ON":"NA",15,euc.dash.auto.onC.beep?4:1);
+		UI.btn.c2l("main","_2x2",1,"HL",val[euc.dash.auto.onD.HL],15,euc.dash.auto.onD.HL?4:1);
+		UI.btn.c2l("main","_2x2",2,"LED",euc.dash.auto.onD.led?euc.dash.auto.onD.led-1+"":"NA",15,euc.dash.auto.onD.led?4:1);
+		UI.btn.c2l("main","_2x2",3,"BEEP",euc.dash.auto.onD.beep?"ON":"NA",15,euc.dash.auto.onD.beep?4:1);
 		UI.btn.c2l("main","_2x2",4,"","",15,1);	
 		UIc.end();
 		this.run=1;
@@ -21,20 +21,20 @@ face[0] = {
 		UIc.main._2x2=(i)=>{
 			if (i==1){
 				buzzer.nav(buzzer.buzz.ok);
-                euc.dash.auto.onC.HL++;  if (3<euc.dash.auto.onC.HL) euc.dash.auto.onC.HL=0;
+                euc.dash.auto.onD.HL++;  if (3<euc.dash.auto.onD.HL) euc.dash.auto.onD.HL=0;
                 let val=["NA","ON","OFF","STOBE"];
-                UI.btn.c2l("main","_2x2",1,"HL",val[euc.dash.auto.onC.HL],15,euc.dash.auto.onC.HL?4:1);
+                UI.btn.c2l("main","_2x2",1,"HL",val[euc.dash.auto.onD.HL],15,euc.dash.auto.onD.HL?4:1);
 
 			}else if (i==2){
 				buzzer.nav(buzzer.buzz.ok);
-                euc.dash.auto.onC.led++; if (10<euc.dash.auto.onC.led) euc.dash.auto.onC.led=0;
-				UI.btn.c2l("main","_2x2",2,"LED",euc.dash.auto.onC.led?euc.dash.auto.onC.led-1+"":"NA",15,euc.dash.auto.onC.led?4:1);
+                euc.dash.auto.onD.led++; if (10<euc.dash.auto.onD.led) euc.dash.auto.onD.led=0;
+				UI.btn.c2l("main","_2x2",2,"LED",euc.dash.auto.onD.led?euc.dash.auto.onD.led-1+"":"NA",15,euc.dash.auto.onD.led?4:1);
 				return;
 		  }
 		  else if (i==3){
 				buzzer.nav(buzzer.buzz.ok);	
-                euc.dash.auto.onC.beep=1-euc.dash.auto.onC.beep;
-                UI.btn.c2l("main","_2x2",3,"BEEP",euc.dash.auto.onC.beep?"ON":"NA",15,euc.dash.auto.onC.beep?4:1);
+                euc.dash.auto.onD.beep=1-euc.dash.auto.onD.beep;
+                UI.btn.c2l("main","_2x2",3,"BEEP",euc.dash.auto.onD.beep?"ON":"NA",15,euc.dash.auto.onD.beep?4:1);
                 return;
 			}else if (i==4){
 				buzzer.nav(buzzer.buzz.ok);	

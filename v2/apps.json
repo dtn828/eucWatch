@@ -712,7 +712,8 @@
 			{"name":"dashBegodeAdv","url":"../../Magic-testing/dashBegode/dashBegodeAdv.js"},
 			{"name":"dashBegodeLimits","url":"../../Magic-testing/dashBegode/dashBegodeLimits.js"},
 			{"name":"dashBegodeCalibrate","url":"../../Magic-testing/dashBegode/dashBegodeCalibrate.js"},
-			{"name":"dashBegodeOnC","url":"../../Magic-testing/dashBegode/dashBegodeOnC.js"}
+			{"name":"dashBegodeOnC","url":"../../Magic-testing/dashBegode/dashBegodeOnC.js"},
+			{"name":"dashBegodeOnD","url":"../../Magic-testing/dashBegode/dashBegodeOnD.js"}
 		]
 	},
 	{ "id": "w_scan",

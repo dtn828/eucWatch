@@ -17,9 +17,9 @@ face[0] = {
 		UIc.start(1,1);
 		this.run=1;
 		UI.btn.c2l("main","_2x2",1,"RIDE",(euc.dash.opt.ride.mode==0)?"SOFT":(euc.dash.opt.ride.mode==1)?"MED":"HARD",15,4);
-		UI.btn.c2l("main","_2x2",2,"On Connect","",15,(euc.dash.alrt.spd.hapt.en||euc.dash.alrt.amp.hapt.en||euc.dash.alrt.tmp.hapt.en||euc.dash.alrt.bat.hapt.en)?4:1);
+		UI.btn.c2l("main","_2x2",2,"ON","CONN.",15,(euc.dash.alrt.spd.hapt.en||euc.dash.alrt.amp.hapt.en||euc.dash.alrt.tmp.hapt.en||euc.dash.alrt.bat.hapt.en)?4:1);
 		UI.btn.c2l("main","_2x2",3,euc.dash.opt.tpms?euc.dash.opt.tpms:"TPMS",(euc.dash.opt.tpms)?(tpms.euc[euc.dash.opt.tpms]&&tpms.euc[euc.dash.opt.tpms].psi)?Math.round(tpms.euc[euc.dash.opt.tpms].psi*metric[tpms.def.metric]).toString(1):"WAIT":"OFF",15,(euc.dash.opt.tpms&&tpms.euc[euc.dash.opt.tpms]&&tpms.euc[euc.dash.opt.tpms].time&&(getTime()|0)-tpms.euc[euc.dash.opt.tpms].time<1800)?(tpms.euc[euc.dash.opt.tpms].alrm)?7:4:1);
-		UI.btn.c2l("main","_2x2",4,"On Disconnect","",15,euc.dash.opt.horn.en?4:0);	
+		UI.btn.c2l("main","_2x2",4,"ON","DISC.",15,euc.dash.opt.horn.en?4:0);	
 		UIc.end();
 		this.run=1;
 		//
