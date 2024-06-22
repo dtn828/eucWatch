@@ -359,6 +359,18 @@ euc.conn = function (mac) {
 					}).catch(euc.off);
 				} else if(n === "LEDMode") {
 					c.writeValue(euc.cmd( "ledMode", v));
+				} else if(n === "RideMode") {
+					switch(v){
+						case 0:
+							c.writeValue(euc.cmd( "pedalSoft")).then(function () { return c.writeValue(euc.cmd("beep")); }).catch(euc.off);
+							break;
+						case 1:
+							c.writeValue(euc.cmd( "pedalMedium")).then(function () { return c.writeValue(euc.cmd("beep")); }).catch(euc.off);
+							break;
+						case 2:
+							c.writeValue(euc.cmd( "pedalHard")).then(function () { return c.writeValue(euc.cmd("beep")); }).catch(euc.off);
+							break;
+					}
 				} else if (n === "lightsOn") {
 					euc.dash.opt.lght.HL = 1;
 					c.writeValue(euc.cmd( "lightsOn")).then(function () { return c.writeValue(euc.cmd("beep")); }).catch(euc.off);
