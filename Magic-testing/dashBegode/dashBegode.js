@@ -46,9 +46,9 @@ face[0] = {
 				buzzer.nav(buzzer.buzz.ok);
 				l=euc.dash.opt.lght.led+1;
 				if(l>6)l=0;
-				euc.wri("LEDMode", l);
 				euc.dash.opt.lght.led=l;
-				UI.btn.c2l("main","_2x2",3,"LED",euc.dash.opt.lght.led+1,15,(euc.dash.opt.lght.led == 4)?0:4);
+				euc.wri("LEDMode", l);
+				UI.btn.c2l("main","_2x2",3,"LED",euc.dash.opt.lght.led+1,15,(euc.dash.opt.lght.led == 6)?0:4);
 				//UI.btn.c2l("main","_2x2",3,euc.dash.opt.tpms?euc.dash.opt.tpms:"TPMS",(euc.dash.opt.tpms)?(tpms.euc[euc.dash.opt.tpms]&&tpms.euc[euc.dash.opt.tpms].psi)?Math.round(tpms.euc[euc.dash.opt.tpms].psi*metric[tpms.def.metric]).toString(1):"WAIT":"OFF",15,(euc.dash.opt.tpms&&tpms.euc[euc.dash.opt.tpms]&&tpms.euc[euc.dash.opt.tpms].time&&(getTime()|0)-tpms.euc[euc.dash.opt.tpms].time<1800)?(tpms.euc[euc.dash.opt.tpms].alrm)?7:4:1);
 				//if (ew.def.info) UI.btn.ntfy(1,2,0,"_bar",6,euc.dash.auto.onC.lift?euc.dash.auto.onC.lift==1?"ENABLE":"DISABLE":"NO ACTION","",15,0);w.gfx.flip();
 			}else if (i==4){
@@ -82,8 +82,8 @@ face[0] = {
 		"ram";
 		ew.temp.bar=0;
 		UI.ele.title(this.page.toUpperCase(),3,0);
-		UI.btn.c2l("bar","_2x2",3,euc.dash.opt.tpms?euc.dash.opt.tpms:"TPMS",(euc.dash.opt.tpms)?(tpms.euc[euc.dash.opt.tpms]&&tpms.euc[euc.dash.opt.tpms].psi)?Math.round(tpms.euc[euc.dash.opt.tpms].psi*metric[tpms.def.metric]).toString(1):"WAIT":"OFF",15,(euc.dash.opt.tpms&&tpms.euc[euc.dash.opt.tpms]&&tpms.euc[euc.dash.opt.tpms].time&&(getTime()|0)-tpms.euc[euc.dash.opt.tpms].time<1800)?(tpms.euc[euc.dash.opt.tpms].alrm)?7:4:1);
-		UI.btn.c2l("bar","_2x2",4,"HORN","",15,4);	
+		UI.btn.c2l("main","_2x2",3,"LED",euc.dash.opt.lght.led+1,15,(euc.dash.opt.lght.led == 4)?0:4);
+		UI.btn.c2l("main","_2x2",4,"BTN","HORN",15,euc.dash.opt.horn.en?4:0);	
 	},
 	tid:-1,
 	run:false,
