@@ -1,5 +1,10 @@
 //Begode settings On connect
-
+//touch
+tcBack.replaceWith(()=>{buzzer.nav(buzzer.buzz.ok);	
+	if (UI.ntid) {/*buzzer.nav(buzzer.buzz.ok);*/clearTimeout(UI.ntid);UI.ntid=0;face[0].bar();}
+	face.go("dashBegode",0);return; 
+});
+//
 face[0] = {
 	offms: (ew.def.off[face.appCurr])?ew.def.off[face.appCurr]:5000,
 	g:w.gfx,
