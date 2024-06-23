@@ -22,10 +22,10 @@ face[0] = {
 		UI.ele.title(this.page.toUpperCase(),3,0);
 		UIc.start(1,1);
 		this.run=1;
-		UI.btn.c2l("main","_2x2",1,"BTN1","TEST",15,0);
-		UI.btn.c2l("main","_2x2",2,"BTN1","TEST",15,0);
-		UI.btn.c2l("main","_2x2",3,"BTN1","TEST",15,0);
-		UI.btn.c2l("main","_2x2",4,"BTN1","TEST",15,0);
+		UI.btn.c2l("main","_2x1",1,"ALARMS","TEST",15,0);
+		UI.btn.c2l("main","_2x1",2,"TILTBACK",euc.dash.alrt.spd.tilt.val+"",15,0);
+		//UI.btn.c2l("main","_2x2",3,"BTN1","TEST",15,0);
+		//UI.btn.c2l("main","_2x2",4,"BTN1","TEST",15,0);
 		UIc.end();
 		this.run=1;
 		//
@@ -55,8 +55,8 @@ face[0] = {
 		"ram";
 		ew.temp.bar=0;
 		UI.ele.title(this.page.toUpperCase(),3,0);
-		UI.btn.c2l("main","_2x2",3,"BTN1","TEST",15,0);
-		UI.btn.c2l("main","_2x2",4,"BTN1","TEST",15,0);
+		UI.btn.c2l("main","_2x1",1,"ALARMS","TEST",15,0);
+		UI.btn.c2l("main","_2x1",2,"TILTBACK",euc.dash.alrt.spd.tilt.val+"",15,0);
 	},
 	tid:-1,
 	run:false,

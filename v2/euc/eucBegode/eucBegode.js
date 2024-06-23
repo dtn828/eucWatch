@@ -19,7 +19,7 @@ euc.cmd = function (cmd, param) {
 		case 'lightsOff': return [69];
 		case 'lightsStrobe': return [84];
 		case 'alertsTwo': return [117];
-		case "alertsOneTwo": return [111];
+		case 'alertsOneTwo': return [111];
 		case 'alertsOff': return [105];
 		case 'alertsTiltback': return [73];
 		case 'pedalSoft': return [115];

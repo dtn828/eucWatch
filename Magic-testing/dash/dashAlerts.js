@@ -58,7 +58,10 @@ face[0] = {
 				if (this.slot == "amp" ) {
 					UI.btn.c2l("main","_main",1,trgt=="hi"?"HI":"LOW","",this.btn[0],this.btn[1]);
 					UI.btn.c2l("main","_main",2,euc.dash.alrt[this.slot].hapt.en?"ENABLED":"DISABLED","",this.btn[0],euc.dash.alrt[this.slot].hapt.en?this.btn[3]:this.btn[3]);
-				}else UI.btn.c2l("main","_main",3,euc.dash.alrt[this.slot].hapt.en?"ENABLED":"DISABLED","",this.btn[0],euc.dash.alrt[this.slot].hapt.en?this.btn[1]:this.btn[3]);
+				} else if (this.slot == "spd"){
+					UI.btn.c2l("main","_main",1,trgt=="hi"?"HI":"STEP","",this.btn[0],this.btn[1]);
+					UI.btn.c2l("main","_main",2,euc.dash.alrt[this.slot].hapt.en?"ENABLED":"DISABLED","",this.btn[0],euc.dash.alrt[this.slot].hapt.en?this.btn[3]:this.btn[3]);
+				} else UI.btn.c2l("main","_main",3,euc.dash.alrt[this.slot].hapt.en?"ENABLED":"DISABLED","",this.btn[0],euc.dash.alrt[this.slot].hapt.en?this.btn[1]:this.btn[3]);
 				UIc.end();
 				UI.btn.c3l("main","_lcd",1,euc.dash.alrt[this.slot].hapt[trgt],txt2,this.btn[0],euc.dash.alrt[this.slot].hapt.en?this.btn[1]:this.btn[3]);
 				//UI.btn.ntfy(1,3,0,"_bar",6,txt,". . . . . . . . .",15,0,1);
@@ -73,7 +76,11 @@ face[0] = {
 				UIc.main._main=(i)=>{
 					if (i==1){
 						buzzer.nav(buzzer.buzz.ok);
+						if (this.slot == "amp" ) {
 						face[0].sel(2,"amp",trgt=="hi"?"LOW AMP":"HI AMP","AMP",trgt=="hi"?"low":"hi",trgt=="hi"?-40:10,trgt=="hi"?-1:99);
+						} else if (this.slot == "spd") {
+							face[0].sel(2,"spd",trgt=="hi"?"STEP":"SPEED",ew.def.dash.mph?"MPH":"KPH",trgt=="hi"?"step":"hi",trgt=="hi"?1:110,trgt=="hi"?10:99);
+						}
 					}else if (i==2||i==3){
 						buzzer.nav(buzzer.buzz.ok);
 						euc.dash.alrt[this.slot].hapt.en=1-euc.dash.alrt[this.slot].hapt.en;

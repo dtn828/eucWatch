@@ -59,8 +59,8 @@ face[0] = {
 		"ram";
 		ew.temp.bar=0;
 		UI.ele.title(this.page.toUpperCase(),3,0);
-		UI.btn.c2l("bar","_2x2",3,euc.dash.opt.tpms?euc.dash.opt.tpms:"TPMS",(euc.dash.opt.tpms)?(tpms.euc[euc.dash.opt.tpms]&&tpms.euc[euc.dash.opt.tpms].psi)?Math.round(tpms.euc[euc.dash.opt.tpms].psi*metric[tpms.def.metric]).toString(1):"WAIT":"OFF",15,(euc.dash.opt.tpms&&tpms.euc[euc.dash.opt.tpms]&&tpms.euc[euc.dash.opt.tpms].time&&(getTime()|0)-tpms.euc[euc.dash.opt.tpms].time<1800)?(tpms.euc[euc.dash.opt.tpms].alrm)?7:4:1);
-		UI.btn.c2l("bar","_2x2",4,"HORN","",15,4);	
+		UI.btn.c2l("main","_2x2",3,"BEEP",euc.dash.auto.onD.beep?"ON":"NA",15,euc.dash.auto.onD.beep?4:1);
+		UI.btn.c2l("main","_2x2",4,"","",15,1);	
 	},
 	tid:-1,
 	run:false,

@@ -1,6 +1,6 @@
 //Begode settings
 //touch
-tcNext.replaceWith(()=>{buzzer.nav(buzzer.buzz.ok);face.go("dashBegodeAdv",0);return;});
+tcNext.replaceWith(()=>{buzzer.nav(buzzer.buzz.ok);face.go("dashBegodeP2",0);return;});
 tcBack.replaceWith(()=>{buzzer.nav(buzzer.buzz.ok);	
 	if (UI.ntid) {/*buzzer.nav(buzzer.buzz.ok);*/clearTimeout(UI.ntid);UI.ntid=0;face[0].bar();}
 	face.go("dashBegode",0);return; 
