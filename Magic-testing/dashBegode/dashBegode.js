@@ -3,7 +3,7 @@
 tcNext.replaceWith((x,y)=>{
 	"ram";
 	buzzer.nav(buzzer.buzz.ok);	
-	face.go("dashBegodeOpt",0);return; 
+	face.go("dashBegodeP2",0);return; 
 });
 tcBack.replaceWith((x,y)=>{
 	"ram";
@@ -23,7 +23,7 @@ face[0] = {
 		UIc.start(1,1);
 		this.run=1;
 		UI.btn.c2l("main","_2x2",1,"HEAD","LIGHT",15,euc.dash.opt.lght.HL?4:0);
-		UI.btn.c2l("main","_2x2",2,"WATCH","ALERTS",15,(euc.dash.alrt.spd.hapt.en||euc.dash.alrt.amp.hapt.en||euc.dash.alrt.tmp.hapt.en||euc.dash.alrt.bat.hapt.en)?4:1);
+		UI.btn.c2l("main","_2x2",2,"STROBE",euc.dash.opt.lght.strb?"ON":"OFF",15,euc.dash.opt.lght.strb?4:1);
 		UI.btn.c2l("main","_2x2",3,"LED",euc.dash.opt.lght.led+"",15,(euc.dash.opt.lght.led == 6)?0:4);
 		UI.btn.c2l("main","_2x2",4,"BTN","HORN",15,euc.dash.opt.horn.en?4:0);	
 		UIc.end();
@@ -34,11 +34,19 @@ face[0] = {
 				buzzer.nav(buzzer.buzz.ok);
 				euc.wri("HLtgl");
 				UI.btn.c2l("main","_2x2",1,"HEAD","LIGHT",15,euc.dash.opt.lght.HL?4:0);
+				euc.dash.opt.lght.strb=0;
+				UI.btn.c2l("main","_2x2",2,"STROBE",euc.dash.opt.lght.strb?"ON":"OFF",15,euc.dash.opt.lght.strb?4:1);
 				if (ew.def.info) UI.btn.ntfy(1,2,0,"_bar",6,euc.dash.opt.lght.HL?"ON":"OFF","",15,0);w.gfx.flip();
 			}else if (i==2){
 				buzzer.nav(buzzer.buzz.ok);
-				face.go("dashAlerts",0);
-				return;
+				if(euc.dash.opt.lght.strb){
+					euc.dash.opt.lght.strb=0;
+					euc.wri(euc.dash.opt.lght.HL?"lightsOn":"lightsOff",0,1);
+				} else {
+					euc.dash.opt.lght.strb=1;
+					euc.wri("lightsStrobe",0,1);
+				}
+				UI.btn.c2l("main","_2x2",2,"STROBE",euc.dash.opt.lght.strb?"ON":"OFF",15,euc.dash.opt.lght.strb?4:1);
 			}else if (i==3){
 				buzzer.nav(buzzer.buzz.ok);
 				let l=euc.dash.opt.lght.led+1;

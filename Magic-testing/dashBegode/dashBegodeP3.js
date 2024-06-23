@@ -2,14 +2,14 @@
 //touch
 tcNext.replaceWith((x,y)=>{
 	"ram";
-	buzzer.nav(buzzer.buzz.ok);	
-	face.go("dashBegodeP3",0);return; 
+	buzzer.nav(buzzer.buzz.na);	
+	return; 
 });
 tcBack.replaceWith((x,y)=>{
 	"ram";
 	buzzer.nav(buzzer.buzz.ok);	
 	if (UI.ntid) {/*buzzer.nav(buzzer.buzz.ok);*/clearTimeout(UI.ntid);UI.ntid=0;face[0].bar();}
-	face.go("dashBegode",0);return; 
+	face.go("dashBegodeOpt",0);return; 
 });
 //
 face[0] = {
@@ -22,29 +22,30 @@ face[0] = {
 		UI.ele.title(this.page.toUpperCase(),3,0);
 		UIc.start(1,1);
 		this.run=1;
-		UI.btn.c2l("main","_2x2",1,"WATCH","ALERTS",15,(euc.dash.alrt.spd.hapt.en||euc.dash.alrt.amp.hapt.en||euc.dash.alrt.tmp.hapt.en||euc.dash.alrt.bat.hapt.en)?4:1);
-		UI.btn.c2l("main","_2x2",2,"WHEEL","ALERTS",15,(euc.dash.alrt.spd.one.en||euc.dash.alrt.spd.two.en||euc.dash.alrt.spd.tilt.val)?4:1);
-		UI.btn.c2l("main","_2x2",3,"PEDALS",(euc.dash.opt.ride.mode==0)?"SOFT":(euc.dash.opt.ride.mode==1)?"MED":"HARD",15,4);
-		UI.btn.c2l("main","_2x2",4,"CALIBRATE","",15,0);
+		UI.btn.c2l("main","_2x2",1,"ON","CONN.",15,(euc.dash.auto.onC.HL||euc.dash.auto.onC.led||euc.dash.auto.onC.beep)?4:1);
+		UI.btn.c2l("main","_2x2",2,"ON","DISC.",15,(euc.dash.auto.onD.HL||euc.dash.auto.onD.led||euc.dash.auto.onD.beep)?4:1);	
+		UI.btn.c2l("main","_2x2",3,"VOLUME",euc.dash.vol+"",15,0);
+		UI.btn.c2l("main","_2x2",4,"BTN1","TEST",15,0);
 		UIc.end();
 		this.run=1;
-		//euc.dash.alrt.spd.one.en
+		//
 		UIc.main._2x2=(i)=>{
+			print(i);
 			if (i==1){
 				buzzer.nav(buzzer.buzz.ok);
-				face.go("dashAlerts",0);
+				face.go("dashBegodeOnC",0);
 			}else if (i==2){
 				buzzer.nav(buzzer.buzz.ok);
-				face.go("dashBegodeAlerts",0);
+				face.go("dashBegodeOnD",0);
 			}else if (i==3){
 				buzzer.nav(buzzer.buzz.ok);
-				let tmp=euc.dash.opt.ride.mode+1;
-				if(tmp>2) tmp=0;
-				euc.wri("RideMode", tmp, true);
-				euc.dash.opt.ride.mode=tmp;
-				UI.btn.c2l("main","_2x2",3,"PEDALS",(euc.dash.opt.ride.mode==0)?"SOFT":(euc.dash.opt.ride.mode==1)?"MED":"HARD",15,4);
+				let t = euc.dash.vol+1;
+				if(t>9) t = 0;
+				euc.wri("volume",t,1);
+				euc.dash.vol = t;
+				UI.btn.c2l("main","_2x2",3,"VOLUME",euc.dash.vol+"",15,0);
 			}else if (i==4){
-				buzzer.nav(buzzer.buzz.ok);
+				buzzer.nav(buzzer.buzz.na);	
 			}
 		};
 	},
@@ -61,8 +62,8 @@ face[0] = {
 		"ram";
 		ew.temp.bar=0;
 		UI.ele.title(this.page.toUpperCase(),3,0);
-		UI.btn.c2l("main","_2x2",3,"PEDALS",(euc.dash.opt.ride.mode==0)?"SOFT":(euc.dash.opt.ride.mode==1)?"MED":"HARD",15,4);
-		UI.btn.c2l("main","_2x2",4,"CALIBRATE","",15,0);
+		UI.btn.c2l("main","_2x2",3,"VOLUME",euc.dash.vol+"",15,0);
+		UI.btn.c2l("main","_2x2",4,"","",15,0);
 	},
 	tid:-1,
 	run:false,

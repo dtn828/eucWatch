@@ -708,13 +708,11 @@
 	    "needsFeatures":["V2"],
 		"storage": [
 			{"name":"dashBegode","url":"../../Magic-testing/dashBegode/dashBegode.js"},
-			{"name":"dashBegodeOpt","url":"../../Magic-testing/dashBegode/dashBegodeOpt.js"},
-			{"name":"dashBegodeAdv","url":"../../Magic-testing/dashBegode/dashBegodeAdv.js"},
-			{"name":"dashBegodeLimits","url":"../../Magic-testing/dashBegode/dashBegodeLimits.js"},
+			{"name":"dashBegodeP2","url":"../../Magic-testing/dashBegode/dashBegodeP2.js"},
+			{"name":"dashBegodeP3","url":"../../Magic-testing/dashBegode/dashBegodeP3.js"},
 			{"name":"dashBegodeCalibrate","url":"../../Magic-testing/dashBegode/dashBegodeCalibrate.js"},
 			{"name":"dashBegodeOnC","url":"../../Magic-testing/dashBegode/dashBegodeOnC.js"},
 			{"name":"dashBegodeOnD","url":"../../Magic-testing/dashBegode/dashBegodeOnD.js"},
-			{"name":"dashBegodeP2","url":"../../Magic-testing/dashBegode/dashBegodeP2.js"},
 			{"name":"dashBegodeAlerts","url":"../../Magic-testing/dashBegode/dashBegodeAlerts.js"}
 		]
 	},

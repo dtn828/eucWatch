@@ -26,10 +26,10 @@ face[0] = {
 		UIc.main._2x2=(i)=>{
 			if (i==1){
 				buzzer.nav(buzzer.buzz.ok);
-				tmp=euc.dash.opt.ride.mode+1;
+				let tmp=euc.dash.opt.ride.mode+1;
 				if(tmp>2) tmp=0;
 				euc.dash.opt.ride.mode=tmp;
-				euc.wri("RideMode", tmp);
+				euc.wri("RideMode", tmp, true);
 				euc.dash.opt.ride.mode=tmp;
 				UI.btn.c2l("main","_2x2",1,"RIDE",(euc.dash.opt.ride.mode==0)?"SOFT":(euc.dash.opt.ride.mode==1)?"MED":"HARD",15,4);
 				//if (ew.def.info) UI.btn.ntfy(1,2,0,"_bar",6,euc.dash.opt.lght.HL?"ON":"OFF","",15,0);w.gfx.flip();
