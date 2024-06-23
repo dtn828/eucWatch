@@ -2,7 +2,7 @@
 //touch
 tcBack.replaceWith(()=>{buzzer.nav(buzzer.buzz.ok);	
 	if (UI.ntid) {/*buzzer.nav(buzzer.buzz.ok);*/clearTimeout(UI.ntid);UI.ntid=0;face[0].bar();}
-	face.go("dashBegodeOpt",0);return; 
+	face.go("dashBegodeP3",0);return; 
 });
 //
 face[0] = {
