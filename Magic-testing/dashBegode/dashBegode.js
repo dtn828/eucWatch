@@ -43,7 +43,8 @@ face[0] = {
 				buzzer.nav(buzzer.buzz.ok);
 				let l=euc.dash.opt.lght.led+1;
 				if(l>6)l=0;
-				euc.wri("LEDMode", l);
+				//euc.wri("LEDMode", l);
+				euc.wri("ledMode", l, true);
 				euc.dash.opt.lght.led=l;
 				UI.btn.c2l("main","_2x2",3,"LED",euc.dash.opt.lght.led+"",15,(euc.dash.opt.lght.led == 6)?0:4);
 			}else if (i==4){

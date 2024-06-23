@@ -331,7 +331,7 @@ euc.conn = function (mac) {
 			//write
 		}).then(function (c) {
 			console.log("EUC Begode connected!");
-			euc.wri = function (n, v) {
+			euc.wri = function (n, v, bp) {
 				if (euc.tout.busy) { clearTimeout(euc.tout.busy); euc.tout.busy = setTimeout(() => { euc.tout.busy = 0; }, 150); return; }
 				euc.tout.busy = setTimeout(() => { euc.tout.busy = 0; }, 100);
 				//end
@@ -394,6 +394,8 @@ euc.conn = function (mac) {
 						return cob[2] ? c.writeValue(cob[2]) : "ok";
 					}).then(function () {
 						return cob[3] ? c.writeValue(cob[3]) : "ok";
+					}).then(function () {
+						return bp ? c.writeValue(euc.cmd("beep")) : "ok";
 					}).catch(euc.off);
 				}
 			};
