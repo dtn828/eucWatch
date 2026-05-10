@@ -47,7 +47,7 @@ global.euc = {
 				}
 				euc.updateDash(require("Storage").readJSON("dash.json", 1).slot);
 				this.log.trip = [0, 0, 0];
-				if (face.appCurr=="dashOff") face.go('dashOff',0);
+				face.go('dashOff',0);
 				if (ew.def.acc) acc.on(1);
 
 			}, 1000);
