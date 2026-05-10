@@ -187,7 +187,7 @@ function appSorter(a, b) {
 work out what to display re: versions and if we can update */
 function getVersionInfo(appListing, appInstalled) {
   let versionText = "";
-  let canUpdate = false;
+  let canUpdate = true;
 
   function clicky(v) {
     return `<a class="c-hand" onclick="showChangeLog('${appListing.id}')">${v}</a>`;
