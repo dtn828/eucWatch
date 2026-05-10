@@ -73,7 +73,7 @@ global.euc = {
 				if (euc.dash.info.get.makr !== "Kingsong" || euc.dash.info.get.makr !== "inmotionV11") euc.dash.trip.topS = 0;
 				this.conn(this.mac);
 				acc.off();
-				if (ew.def.acc) {
+				if (1) {
 					setTimeout(() => { ew.def.dash.accE = 1;
 						acc.on(2); }, 1000);
 				}
