@@ -79,7 +79,7 @@ face[0] = {
 						if (this.slot == "amp" ) {
 						face[0].sel(2,"amp",trgt=="hi"?"LOW AMP":"HI AMP","AMP",trgt=="hi"?"low":"hi",trgt=="hi"?-40:10,trgt=="hi"?-1:99);
 						} else if (this.slot == "spd") {
-							face[0].sel(2,"spd",trgt=="hi"?"STEP":"SPEED",ew.def.dash.mph?"MPH":"KPH",trgt=="hi"?"step":"hi",trgt=="hi"?1:110,trgt=="hi"?10:99);
+							face[0].sel(2,"spd",trgt=="hi"?"STEP":"SPEED",ew.def.dash.mph?"MPH":"KPH",trgt=="hi"?"step":"hi",trgt=="hi"?1:10,trgt=="hi"?10:99);
 						}
 					}else if (i==2||i==3){
 						buzzer.nav(buzzer.buzz.ok);

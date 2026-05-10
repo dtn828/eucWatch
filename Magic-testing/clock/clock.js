@@ -51,7 +51,7 @@ face[0] = {
 			note:[0,55,239,90],
 			sec:[202,75,239,185],
 			hour:[1,75,100,185],
-			min:[98,75,203,185],
+			min:[99,75,202,185],
 			btm:[0,176,239,200],
 			bat:[145,30,225,55],
 //			batN:[140,55,239,65],
@@ -270,7 +270,7 @@ face[0] = {
 				else  {this.bmin=1;this.fsec=15;this.bsec=1;}
 			}//else {this.bmin=theme.clock.minB;this.fsec=theme.clock.secF;this.bsec=theme.clock.secB;}
 			this.g.setColor(0,this.bmin);
-			this.g.fillRect({x:this.gui.min[0],y:this.gui.min[1],x2:this.gui.min[2],y2:this.gui.min[3],r:0}); 
+			this.g.fillRect({x:this.gui.min[0],y:this.gui.min[1],x2:this.gui.min[2],y2:this.gui.min[3],r:10}); 
 			this.g.setColor(1,this.fmin);
 			this.g.drawString(this.t[1],this.gui.time[1],this.gui.time[2]);
 			if (this.old)this.g.flip();
